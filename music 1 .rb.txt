@@ -1,0 +1,44 @@
+live_loop :melody do
+  
+  root_note = :A
+  major_scale = scale(root_note, :major)
+  
+  define :piano do |note|
+    synth :piano, note: note, release: 0.7, amp: 1
+  end
+  
+  6.times do
+    use_bpm 120
+    
+    melody_notes = [:d4, :f4, :g4, :b4, :g4, :f4, :b4]
+    melody_notes = [:c4, :g4, :b5, :d5, :a4, :b5, :g4]
+    
+    
+    piano melody_notes.tick
+    sleep 0.7
+  end
+end
+
+
+live_loop :chord do
+  play_chord chord(:d4, :major), release: 1.5
+  sleep 2
+end
+
+live_loop :pluck do
+  play :f2, release: 2
+  sleep 3
+end
+
+live_loop :drums do
+  sample :drum_bass_soft
+  sleep 0.5
+  sample :drum_splash_hard
+  sleep 1
+end
+
+live_loop :piano do
+  sample :bass_hit_c
+  sleep 2
+end
+

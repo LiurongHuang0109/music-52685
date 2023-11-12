@@ -1,0 +1,13 @@
+6.times do
+  use_bpm 120
+  
+  define :piano do |note|
+    synth :piano, note: note, release: 0.8, amp: 1
+  end
+  
+  melody_notes = [:d4, :f4, :g4, :b4, :g4, :f4, :b4]
+  
+  piano melody_notes.tick
+  sleep 0.7
+end
+

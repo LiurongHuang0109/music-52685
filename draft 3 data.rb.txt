@@ -1,0 +1,16 @@
+# Sonic Pi Piano Song
+
+use_bpm 90
+
+define :piano do |note|
+  synth :piano, note: note, release:1, amp: 0.8
+end
+
+melody_notes = [:d4, :f4, :g4, :b4, :g4, :f4, :b4]
+
+live_loop :melody do
+  4.times do
+    piano melody_notes.tick
+    sleep 0.8
+  end
+end
